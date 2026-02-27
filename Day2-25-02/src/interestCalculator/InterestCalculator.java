@@ -12,8 +12,6 @@ public class InterestCalculator {
 			System.out.println("1. Interest Calculator -SB");
 			System.out.println("2. Interest Calculator -FD");
 			System.out.println("3. Interest Calculator -RD");
-			System.out.println("4. Exit");
-			
 			int choice = sc.nextInt();
 			
 			switch(choice) {
