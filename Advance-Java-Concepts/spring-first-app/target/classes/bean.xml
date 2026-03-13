@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!--
+	bean definitions here -->
+	
+	<context:annotation-config/>
+	<bean id="hello" class="bean.HelloWorld" scope="prototype">
+		<property name="name" value="swati"></property>
+		<property name="course">
+			<list>
+				<value>Hindi</value>
+				<value>English</value>
+				<value>Sanskrit</value>
+			</list>
+		</property>
+		<!--<constructor-arg name = "name" value = "Mansi"></costructor-arg>-->
+	</bean>
+	<bean id="e" class="bean.Employee" autowire = "byType">
+		<!--	<property name="empId" value="101"></property>
+		<property name="name" value="John"></property>
+		<property name="address" ref="add"></property>-->
+		<constructor-arg name="empId" value="101"></constructor-arg>
+		<constructor-arg name="name" value="John"></constructor-arg>
+		<constructor-arg name="address" ref="add"></constructor-arg>
+	</bean>
+
+	<bean id="add" class="bean.Address">
+		<!--<property name="city" value="Seoul"></property>
+		<property name="country" value="Korea"></property>
+		<property name="zip" value="12673"></property>-->
+		<constructor-arg name="city" value="Seoul"></constructor-arg>
+		<constructor-arg name="country" value="Korea"></constructor-arg>
+		<constructor-arg name="zip" value="12673"></constructor-arg>
+	</bean>
+</beans>
