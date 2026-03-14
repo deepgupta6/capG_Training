@@ -7,7 +7,9 @@
 	bean definitions here -->
 	
 	<context:annotation-config/>
-	<bean id="hello" class="bean.HelloWorld" scope="prototype">
+	<context:component-scan base-package="bean"/>
+	<context:property-placeholder location = "classpath:data.properties"/>
+	<!--<bean id="hello" class="bean.HelloWorld" scope="prototype">
 		<property name="name" value="swati"></property>
 		<property name="course">
 			<list>
@@ -16,23 +18,23 @@
 				<value>Sanskrit</value>
 			</list>
 		</property>
-		<!--<constructor-arg name = "name" value = "Mansi"></costructor-arg>-->
+		<constructor-arg name = "name" value = "Mansi"></costructor-arg>
 	</bean>
 	<bean id="e" class="bean.Employee" autowire = "byType">
-		<!--	<property name="empId" value="101"></property>
+			<property name="empId" value="101"></property>
 		<property name="name" value="John"></property>
-		<property name="address" ref="add"></property>-->
+		<property name="address" ref="add"></property>
 		<constructor-arg name="empId" value="101"></constructor-arg>
 		<constructor-arg name="name" value="John"></constructor-arg>
 		<constructor-arg name="address" ref="add"></constructor-arg>
 	</bean>
 
 	<bean id="add" class="bean.Address">
-		<!--<property name="city" value="Seoul"></property>
+		<property name="city" value="Seoul"></property>
 		<property name="country" value="Korea"></property>
-		<property name="zip" value="12673"></property>-->
+		<property name="zip" value="12673"></property>
 		<constructor-arg name="city" value="Seoul"></constructor-arg>
 		<constructor-arg name="country" value="Korea"></constructor-arg>
 		<constructor-arg name="zip" value="12673"></constructor-arg>
-	</bean>
+	</bean>-->
 </beans>
