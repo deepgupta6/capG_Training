@@ -2,6 +2,8 @@ package com.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +15,7 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int empid;
 	private String name;
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dob;
 	private double sal;
 	
@@ -55,8 +58,5 @@ public class Employee {
 	public String toString() {
 		return "Employee [empid=" + empid + ", name=" + name + ", dob=" + dob + ", sal=" + sal + "]";
 	}
-	
-	
-	
 	
 }
