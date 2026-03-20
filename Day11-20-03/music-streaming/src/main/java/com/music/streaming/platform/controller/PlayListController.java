@@ -1,0 +1,41 @@
+package com.music.streaming.platform.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.music.streaming.platform.common.exception.ResourceNotFoundException;
+import com.music.streaming.platform.dto.PlayListRequest;
+import com.music.streaming.platform.model.PlayList;
+import com.music.streaming.platform.service.PlayListService;
+
+@RestController
+@RequestMapping("music/platform/v1/playlists")
+public class PlayListController {
+	private final PlayListService service;
+	
+	public PlayListController(PlayListService service) {
+		this.service = service;
+	}
+	
+	@PostMapping
+	public PlayList createPlayList(PlayListRequest playListRequest) {
+        return service.createPlayList(playListRequest);
+    }
+	
+	@GetMapping("{playListId}")
+	public PlayList getPlayListById(@PathVariable Long playListId) {
+        return service.getPlayListById(playListId);
+    }
+	
+	@DeleteMapping("{playListId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deletePlayList(@PathVariable Long playListId) {
+        service.deletePlayList(playListId);
+    }
+}

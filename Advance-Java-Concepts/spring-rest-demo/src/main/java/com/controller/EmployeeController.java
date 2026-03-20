@@ -17,8 +17,13 @@ import com.dto.EmployeeDTO;
 import com.entity.Employee;
 import com.service.IEmployeeService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("employees")
+@Tag(name = "EmployeeAPI", description = "This provide the CRUD operation with Employee Enitity")
 public class EmployeeController {
 	@Autowired
 	private IEmployeeService service;
@@ -27,6 +32,7 @@ public class EmployeeController {
 		this.service = service;
 	}
 	
+	@Operation(summary = "This API will provide all employees details fom MYSQL DB")
 	@GetMapping("/{empId}")
 	public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable int empId) {
 		EmployeeDTO e = service.getEmployee(empId);
@@ -51,7 +57,7 @@ public class EmployeeController {
 	}
 	
 	@PostMapping(consumes = {"application/json","application/xml"})
-	public EmployeeDTO createNewEmployee(@RequestBody EmployeeDTO emp) {
+	public EmployeeDTO createNewEmployee(@RequestBody @Valid EmployeeDTO emp) {
 		return service.createEmployee(emp);
 	}
 	

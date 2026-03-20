@@ -8,7 +8,9 @@ public class EntityMapper {
 	}
 	
 	public static EmployeeDTO convertEntityToDto(Employee e) {
-		return new EmployeeDTO(e.getEmpid(),e.getName(),e.getDob(),e.getSal());
+		EmployeeDTO dto =  new EmployeeDTO(e.getName(),e.getDob(),e.getSal());
+		dto.setEmployeeId(e.getEmpid());
+		return dto;
 	}
 
 }
