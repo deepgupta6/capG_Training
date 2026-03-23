@@ -1,6 +1,7 @@
 package com.dto;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -54,6 +55,27 @@ public class EmployeeDTO {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dateOfBirth, employeeId, fullName, salary);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EmployeeDTO other = (EmployeeDTO) obj;
+		return Objects.equals(dateOfBirth, other.dateOfBirth) && employeeId == other.employeeId
+				&& Objects.equals(fullName, other.fullName)
+				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
+	}
+	
+	
 	
 	
 }
